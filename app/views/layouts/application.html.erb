@@ -12,6 +12,30 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%# notice bar - container-fluid %>
+    <div id="flash" class="container-fluid d-flex justify-content-center" style="position: fixed; z-index: 100;">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, raw("<em>#{msg}</em>"), id: 'flash-content', class: 'text-light mt-3', style: 'position: fixed;' %>
+      <% end %>
+    </div><%# notice bar - container-fluid %>
+    <%# yield-container %>
+    <div id="yield-container" class="container-fluid p-0">
+      <%= yield %>
+    </div><%# yield-container %>
+    <script>
+      window.onload = function() {
+        var bootstrap_enabled = (typeof $().modal == 'function');
+        var flash = $('#flash');
+        function fadeOut() {
+          flash.addClass('fade-out')
+        }
+        function removeElement() {
+          flash.addClass('d-none');
+          flash.removeClass('d-flex');
+        }
+        setTimeout(fadeOut, 1500);
+        setTimeout(removeElement, 8000);
+      }
+    </script>
   </body>
 </html>
