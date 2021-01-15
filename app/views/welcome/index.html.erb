@@ -1,5 +1,25 @@
-<div class="d-flex flex-row justify-content-center" style="height: 95vh;">
-    <div class="d-flex flex-column justify-content-center">
-        <%= image_tag 'illustrated-face.png' %>
+<div id="welcome-page" class="d-flex flex-row w-100" style="height: 100vh;">
+    <div class="d-flex flex-column justify-content-end w-100">
+        <div class="d-flex flex-row justify-content-end">
+            <div class="d-flex flex-column">
+                <% if !@user.created_at %>
+                    <% if @signing_up %>
+                        <%= turbo_frame_tag "new_registration", src: new_user_registration_path(@user), target: '_top', class: 'turbo-float bg-fawn rounded' %>
+                    <% elsif @signing_in %>
+                        <%= turbo_frame_tag "new_session", src: new_user_session_path(@user), target: '_top', class: 'turbo-float bg-liver rounded' %>
+                    <% else %>
+                        <%= content_tag :div, 'Sign Up', class: 'btn btn-lg btn-fawn mr-1 mb-1', data: { reflex: 'click->WelcomeReflex#sign_up' } %>
+                        <%= content_tag :div, 'Sign In', class: 'btn btn-lg btn-liver mr-1 mb-1', data: { reflex: 'click->WelcomeReflex#sign_in' } %>
+                    <% end %>
+                <% else %>
+                    <% if @making_room %>
+                        <%= turbo_frame_tag "new_room", src: new_room_path, target: '_top', class: 'turbo-float bg-olive rounded text-cornsilk' %>
+                    <% else %>
+                        <p class="mr-1 mb-1">showing my rooms!</p>
+                        <%= content_tag :div, 'New Room', class: 'btn btn-lg btn-olive mr-1 mb-1', data: { reflex: 'click->WelcomeReflex#make_room' } %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>

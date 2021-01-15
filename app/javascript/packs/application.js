@@ -11,3 +11,5 @@ require('jquery')
 
 Rails.start()
 ActiveStorage.start()
+
+import "controllers"
