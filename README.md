@@ -1,13 +1,20 @@
-# README
+# hotwire-chat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is a use case for Hotwire and Turbo in Ruby on Rails.  It renders partials and forms without redirecting and can be diven data streams that continually update. 
+
+### We are going for a Slack type feel.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby 2.6.3
 
-* System dependencies
+* Rails 6.1.1
+
+* hotwire-rails (Hotwire, Turbo) 
+
+* Redis backing for handling Websockets with ActionCable
+
+* Bootstrap 4, jQuery, Popper.js
 
 * Configuration
 
