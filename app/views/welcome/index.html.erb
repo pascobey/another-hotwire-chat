@@ -15,8 +15,11 @@
                     <% if @making_room %>
                         <%= turbo_frame_tag "new_room", src: new_room_path, target: '_top', class: 'turbo-float bg-olive rounded text-cornsilk' %>
                     <% else %>
-                        <p class="mr-1 mb-1">showing my rooms!</p>
-                        <%= content_tag :div, 'New Room', class: 'btn btn-lg btn-olive mr-1 mb-1', data: { reflex: 'click->WelcomeReflex#make_room' } %>
+                        <% @rooms.each do |r| %>
+                            <%= link_to r.name, room_path(r), class: 'btn btn-outline-liver mr-1 mb-1' %>
+                        <% end %>
+                        <%= button_tag('New Room', class: 'btn btn-lg btn-olive mr-1 mb-1', data: { reflex: 'click->WelcomeReflex#make_room' }) %>
+                        <%= link_to(button_tag('Sign Out', class: 'btn btn-lg btn-kombu w-100'), destroy_user_session_path, :method => :delete, class: 'mr-1 mb-1') %>
                     <% end %>
                 <% end %>
             </div>

@@ -1,17 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div id="welcome-page" class="d-flex flex-row w-100" style="height: 100vh;">
+  <div class="d-flex flex-column justify-content-start w-100">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="d-flex flex-column w-100">
 
-<%= turbo_stream_from @room %>
 
-<%= turbo_frame_tag 'room' do %>
-  <% render @room %>
-  <p>
-    <%= link_to 'Edit', edit_room_path(@room) %> |
-    <%= link_to 'Back', rooms_path, 'data-turbo-frame': '_top' %>
-  </p>
-<% end %>
 
-<div id="messages">
-  <%= render @room.messages %>
+        <%= turbo_frame_tag 'room' do %>
+          <%= render @room %>
+          <%= link_to 'Edit', edit_room_path(@room) %> |
+          <%= link_to 'Back', '/', 'data-turbo-frame': '_top' %>
+        <% end %>
+
+
+        <%= turbo_stream_from @room %>
+
+
+        <div id="messages" class="bg-light">
+          <%= render @room.messages %>
+        </div>
+
+
+        <%= turbo_frame_tag "new_message", src: new_room_message_path(@room), target: '_top' %>
+
+
+
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= turbo_frame_tag "new_message", src: new_room_message_path(@room), target: '_top' %>

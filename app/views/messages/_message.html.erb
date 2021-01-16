@@ -1,3 +1,19 @@
-<p id="<%= dom_id(message) %>">
-    <%= message.created_at.to_s(:short) %>: <%= message.content %>
-</p>
+<div id="<%= dom_id(message) %>">
+    <div class="d-flex flex-row justify-content-start mx-2 mb-1">
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+                <small>
+                    <%= message.user.email %>
+                </small>
+            </div>
+            <div class="d-flex flex-row">
+                <div class="d-flex flex-column bg-info rounded px-3 py-1">
+                    <%= message.content %>
+                    <small style="margin-top: -7px;"><small>
+                        <%= message.created_at.strftime('%b, %d - %l:%M%P') %>
+                    </small></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,13 @@
 <h1>Editing Room</h1>
 <%= turbo_frame_tag "room" do %>
-    <%= render 'form', room: @room %>
+    <div class="d-flex flex-row">
+        <div class="col-6 p-1">
+            <%= render 'form', room: @room %>
+        </div>
+        <div class="col-6 p-1">
+            <%= render 'users', room: @room %>
+        </div>
+    </div>
 <% end %>
 
 <%= link_to 'Show', @room %> |

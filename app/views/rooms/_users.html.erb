@@ -1,0 +1,18 @@
+<div class="form-group h-100">
+    <h3>Users</h3>
+    <div class="bg-light p-1 rounded border overflow-y-scroll" style="height: 68%;">
+        <% User.all.each do |u| %>
+            <% if room.users.include?(u) %>
+                <div class="text-left">
+                    <%= u.email %>
+                    <%= button_tag 'x', class: 'btn btn-sm btn-danger px-1 py-0', data: { reflex: 'click->RoomReflex#remove_user', room_id: room.id, user_id: u.id } %>
+                </div>
+            <% else %>
+                <div class="text-right">
+                    <%= button_tag '+', class: 'btn btn-sm btn-success px-1 py-0', data: { reflex: 'click->RoomReflex#add_user', room_id: room.id, user_id: u.id } %>
+                    <%= u.email %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

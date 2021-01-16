@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show]
 
   # GET /rooms
   # GET /rooms.json
@@ -10,6 +11,10 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @me = current_user
+    if !@room.users.include?(@me)
+      redirect_to rooms_path, notice: 'Not a part of that chat room'
+    end
   end
 
   # GET /rooms/new
@@ -25,7 +30,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-
+    @room.users << current_user
     respond_to do |format|
       if @room.save
         format.html { redirect_to @room, notice: 'Room was successfully created.' }

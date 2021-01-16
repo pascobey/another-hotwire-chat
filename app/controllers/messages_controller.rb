@@ -1,13 +1,14 @@
 class MessagesController < ApplicationController
-    before_action :set_room, only: [:new, :create]
+    before_action :set_room, :set_user, only: [:new, :create]
     
     def new
         @message = @room.messages.new
     end
 
     def create
-        @message = @room.messages.create!(message_params)
-
+        @create_message_params = message_params
+        @create_message_params["user"] = current_user
+        @message = @room.messages.create!(@create_message_params)
         respond_to do |format|
             format.turbo_stream
             format.html { redirect_to @room }
@@ -17,6 +18,10 @@ class MessagesController < ApplicationController
     private 
         def set_room
             @room = Room.find(params[:room_id])
+        end
+
+        def set_user
+            @user = current_user
         end
 
         def message_params

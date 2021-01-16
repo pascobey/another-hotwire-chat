@@ -1,5 +1,1 @@
-
-<p id="<%= dom_id(room) %>">
-    <strong>Name:</strong>
-    <%= room.name %>
-</p>
+<%= content_tag :div, room.name, id: dom_id(room), class: 'display-4' %>

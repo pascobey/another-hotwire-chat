@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
     else
       @user = User.new
     end
+    @rooms = @user.rooms
     @signing_up ||= false
     @signing_in ||= false
     @making_room ||= false
