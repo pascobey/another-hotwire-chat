@@ -7,7 +7,7 @@ ruby '2.7.1'
 gem 'hotwire-rails'
 gem 'devise'
 gem 'paperclip'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk', '~> 3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
