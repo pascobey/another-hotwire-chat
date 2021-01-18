@@ -6,6 +6,8 @@ ruby '2.7.1'
 
 gem 'hotwire-rails'
 gem 'devise'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -34,6 +36,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
