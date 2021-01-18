@@ -5,13 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
   
     def create
         super
-        # @user = User.new(sign_up_params)
-    
-        # if @user.save
-        #   redirect_to @user, notice: 'User was successfully created.'
-        #  else
-        #    render action: 'new'
-        # end
     end
   
     def update
