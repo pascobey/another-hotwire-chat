@@ -26,7 +26,7 @@ $theme-colors: (
 @import 'bootstrap/scss/bootstrap';
 
 #welcome-page {
-    background-image: url(s3://hotwire-chat-rails/illustrated-face.png);
+    background-image: url(https://hotwire-chat-rails.s3.amazonaws.com/illustrated-face.png);
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
 }

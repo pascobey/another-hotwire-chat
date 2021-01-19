@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   
     def create
-        super
+      super
     end
   
     def update
@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     private
-        def sign_up_params
-            params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
-        end
+      def sign_up_params
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+      end
 end
