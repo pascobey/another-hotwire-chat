@@ -3,14 +3,16 @@
     <div class="bg-light p-1 rounded border overflow-y-scroll" style="height: 68%;">
         <% User.all.each do |u| %>
             <% if room.users.include?(u) %>
-                <div class="text-left">
-                    <%= u.first_name %>&nbsp;<%= u.last_name %>
-                    <%= button_tag 'x', class: 'btn btn-sm btn-danger px-1 py-0', data: { reflex: 'click->RoomReflex#remove_user', room_id: room.id, user_id: u.id } %>
+                <div id="user-<%= u.id %>">
+                    <div class="text-left">
+                        <%= button_tag "remove #{u.first_name} #{u.last_name}", class: 'btn btn-sm btn-danger px-1 py-0', data: { reflex: 'click->RoomReflex#remove_user', room_id: room.id, user_id: u.id } %>
+                    </div>
                 </div>
             <% else %>
-                <div class="text-right">
-                    <%= button_tag '+', class: 'btn btn-sm btn-success px-1 py-0', data: { reflex: 'click->RoomReflex#add_user', room_id: room.id, user_id: u.id } %>
-                    <%= u.first_name %>&nbsp;<%= u.last_name %>
+                <div id="user-<%= u.id %>">
+                    <div class="text-right">
+                        <%= button_tag "add #{u.first_name} #{u.last_name}", class: 'btn btn-sm btn-success px-1 py-0', data: { reflex: 'click->RoomReflex#add_user', room_id: room.id, user_id: u.id } %>
+                    </div>
                 </div>
             <% end %>
         <% end %>
