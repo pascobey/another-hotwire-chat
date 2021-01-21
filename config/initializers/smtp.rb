@@ -1,5 +1,5 @@
 ActionMailer::Base.smtp_settings = {
-    domain: 'chat-play.com',
+    domain: 'https://hotwire-chat-rails.herokuapp.com/',
     address:        "smtp.sendgrid.net",
     port:            587,
     authentication: :plain,

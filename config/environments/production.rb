@@ -7,9 +7,6 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "http://chat-play.com/" }
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -29,6 +26,9 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "http://chat-play.com/" }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
